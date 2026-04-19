@@ -88,7 +88,7 @@ class FetchWeatherTests(unittest.TestCase):
             "observations": [
                 {
                     "obsTimeUtc": "2026-04-19T12:45:00Z",
-                    "epoch": 100,
+                    "epoch": 1713528000,
                     "humidity": 55,
                     "imperial": {
                         "temp": 72.1,

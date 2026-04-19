@@ -94,6 +94,9 @@ def fetch_and_store():
 
             CREATE INDEX IF NOT EXISTS idx_pws_obs_station_time
                 ON pws_observations (station_id, observed_at DESC);
+
+            CREATE UNIQUE INDEX IF NOT EXISTS uq_pws_obs_station_observed
+                ON pws_observations (station_id, observed_at);
         """
         )
 
@@ -108,7 +111,7 @@ def fetch_and_store():
                 %s, %s, %s, %s,
                 %s, %s
             )
-            ON CONFLICT DO NOTHING;   -- skip duplicates if epoch matches
+            ON CONFLICT DO NOTHING;   -- skip duplicates on station_id + observed_at
         """,
             (
                 STATION_ID,
